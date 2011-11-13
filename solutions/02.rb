@@ -1,4 +1,3 @@
-
 class Collection
   def split_and_strip(source, split_char)
     source.split(split_char).map(&:strip)
@@ -6,7 +5,7 @@ class Collection
   
   def initialize(songs_string, artist_tags)
     @line = songs_string.lines.map { |song| split_and_strip(song, '.') }    
-    @line.map! do |name, artist, genres_string, tags_string|
+    @line = @line.map do |name, artist, genres_string, tags_string|
       genre, subgenre = split_and_strip(genres_string, ',')
       tags = artist_tags.fetch(artist, [])
       tags += [genre, subgenre].compact.map(&:downcase)
