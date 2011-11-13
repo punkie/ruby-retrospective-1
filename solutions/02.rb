@@ -9,8 +9,7 @@ class Collection
       genre, subgenre = split_and_strip(genres_string, ',')
       tags = artist_tags.fetch(artist, [])
       tags += [genre, subgenre].compact.map(&:downcase)
-      tags += split_and_strip(tags_string, ',') unless tags_string.nil?
-        
+      tags += split_and_strip(tags_string, ',') unless tags_string.nil?    
       Song.new(name, artist, genre, subgenre, tags)
     end 
   end
